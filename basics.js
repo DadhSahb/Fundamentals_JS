@@ -177,3 +177,30 @@ function checkAge(aged) {
     return confirm("You are not allowed");
   }
 }
+
+// ----------------------------> Function Expression <----------------------------------
+
+// function is a value
+
+let sayhi = function () {
+  console.log("hi");
+};
+alert(sayhi); //it will return the (sayhi) function code because in JS function is a value and it can be assigned to other value as follow
+
+let greet = sayhi; //Please note: there are no parentheses after sayHi. If there were, then func = sayHi() would write the result of the call sayHi() into func, not the function sayHi itself.
+greet();
+sayhi();
+
+// Call back Functions
+
+function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+function showOk() {
+  alert("You agreed");
+}
+function showCancel() {
+  alert("You cancel");
+}
+ask("You you agree?", showOk, showCancel);
