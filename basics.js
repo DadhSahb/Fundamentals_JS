@@ -275,3 +275,37 @@ question(
   () => alert("You Agreed"),
   () => alert("You canceled the execution")
 );
+
+/* ----------------------------------------------> Objects <---------------------------------------------------- 
+* objects are associative arrays with special features to store key-value-pairs
+
+*/
+let user = {
+  name: "Hamza",
+  age: 27,
+  "Likes Birds": true,
+};
+
+user["Likes Birds"] = false;
+
+//accessing user object values
+alert(user.name);
+alert(user["Likes Birds"]); // use square brakets because for multiword properties, the dot access doesn’t work
+//dynamically accessing values
+let key = prompt("Which property you want to print from user object?", "name");
+alert(user[key]);
+
+//-------> computed properties
+let fruit = prompt("whats your fav fruit? ", "mango");
+
+let fruitCheck = {
+  [fruit]: 5,
+};
+alert(fruitCheck.mango); //if mango then 5 is assigned, if other value is assigned it will give undefined
+
+//------> "for in" loop, its used to walk over all keys of an object, there exists a special form of the loop: for..in. This is a completely different thing from the for(;;)
+
+for (let key in user) {
+  alert(key);
+  alert(user[key]);
+}
