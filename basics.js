@@ -93,8 +93,8 @@ console.log(a); // 1
 console.log(b); // 0
 
 /* Task for understading
-"" + 1 + 0 = "10" 
-"" - 1 + 0 = -1 
+"" + 1 + 0 = "10"
+"" - 1 + 0 = -1
 true + false = 1
 6 / "3" = 2
 "2" * "3" = 6
@@ -102,10 +102,10 @@ true + false = 1
 "$" + 4 + 5 = "$45"
 "4" - 2 = 2
 "4px" - 2 = NaN
-"  -9  " + 5 = "  -9  5" 
-"  -9  " - 5 = -14 
-null + 1 = 1 
-undefined + 1 = NaN 
+"  -9  " + 5 = "  -9  5"
+"  -9  " - 5 = -14
+null + 1 = 1
+undefined + 1 = NaN
 " \t \n" - 2 = -2
 */
 
@@ -128,9 +128,9 @@ null == "\n0\n"     false
 null === +"\n0\n"   false
 */
 
-/* 
+/*
 A number 0, an empty string "", null, undefined, and NaN all become false. Because of that they are called “falsy” values.
-Other values become true, so they are called “truthy”. 
+Other values become true, so they are called “truthy”.
 */
 
 /*
@@ -180,8 +180,20 @@ function checkAge(aged) {
 
 // ----------------------------> Function Expression <----------------------------------
 
-// function is a value
+//function is represendted in two ways
+// 1 function decleration
 
+function sum(x, y) {
+  return x + y;
+}
+
+// 2 funtion expression
+
+sum = function (x, y) {
+  return x + y;
+};
+
+// function is a value
 let sayhi = function () {
   console.log("hi");
 };
@@ -192,7 +204,6 @@ greet();
 sayhi();
 
 // Call back Functions
-
 function ask(question, yes, no) {
   if (confirm(question)) yes();
   else no();
@@ -204,3 +215,63 @@ function showCancel() {
   alert("You cancel");
 }
 ask("You you agree?", showOk, showCancel);
+
+//call back function by creating annonymous function
+
+age = prompt("whats your age", 20);
+// debugger;
+let welcome;
+function checkAge() {
+  welcome =
+    age < 18
+      ? (welcome = function () {
+          alert("You are not allowed");
+        })
+      : (welcome = function () {
+          alert("Greetings");
+        });
+  welcome();
+}
+checkAge();
+
+//-------------------------> Arrow Function, concise syntax for creating functions <--------------------------
+
+age = prompt("In which year you are born ?", 1997);
+
+welcome =
+  age > 2005 ? () => alert("You are not allowed") : () => alert("Greetings");
+welcome();
+
+//multiLine Arrow Function
+
+sum = (x, y) => {
+  return x + y;
+};
+alert(sum(2, 5));
+
+function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+
+/*Task: Following task shows the normal function and an arrow function side by side*/
+//Normal Function
+ask(
+  "Do you agree?",
+  function () {
+    alert("You agreed.");
+  },
+  function () {
+    alert("You canceled the execution.");
+  }
+);
+//Arrow Function
+let question = (quest, yes, no) => {
+  confirm(quest) ? yes() : no();
+};
+
+question(
+  "Do you agree",
+  () => alert("You Agreed"),
+  () => alert("You canceled the execution")
+);
